@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 const Navbar = (): JSX.Element => {
   return (
     <nav className="navbar mb-12 p-4 shadow-lg bg-[#191d24] text-neutral-content">
-      <div className="flex items-center container mx-auto">
+      <div className="flex items-center container mx-auto text-white">
         <div className="flex-none px-2 mx-2">
           <FaGithub className="inline pr-2 text-3xl text-white" />
           <Link to="/" className="text-lg font-bold align-middle">
