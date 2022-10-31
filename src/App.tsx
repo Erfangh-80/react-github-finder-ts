@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom"
+// redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 // components
 import Navbar from './components/Layout/Navbar';
@@ -10,21 +13,23 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="bg-[#282c34] min-h-screen">
-      <div className="flex flex-col justify-between h-screen">
-        <Navbar />
+    <Provider store={store}>
+      <div className="bg-[#282c34] min-h-screen">
+        <div className="flex flex-col justify-between h-full">
+          <Navbar />
 
-        <main className='container mx-auto px-3 pb-12'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/notfound' element={<NotFound />} />
-            <Route path='/*' element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
+          <main className='container mx-auto px-3 pb-12'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/notfound' element={<NotFound />} />
+              <Route path='/*' element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 }
 
