@@ -13,18 +13,10 @@ interface UserState {
   error: string;
 }
 
-// type userSearch = {
-//   text: string
-// }
-
 const UserResults = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const usersState: UserState = useSelector((state: any) => state);
-
-  // useEffect(() => {
-  //   if (!usersState.users.items?.length) dispatch(fethDataUsers(text));
-  // }, [dispatch, text]);
 
   return (
     <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 text-white">

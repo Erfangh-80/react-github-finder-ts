@@ -32,6 +32,11 @@ const reducer = (state: state = initialState, action: dataState) => {
                 error: action.payload,
                 loading: false
             }
+        case ACTIONS.FETCH_CLEAR_DATA:
+            return {
+                ...state,
+                users: [],
+            }
         default: return state
     }
 }
