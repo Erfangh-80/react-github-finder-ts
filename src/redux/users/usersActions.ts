@@ -31,11 +31,11 @@ const fetchDataFailure = (errorMessage: string): dataState => {
   };
 };
 
-const fethDataUsers = (): any => {
+const fethDataUsers = (textUser: string): any => {
   return (dispatch: any) => {
     dispatch(fetchDataRequest());
     axios
-      .get(`${process.env.REACT_APP_GITHUB_BASE_URL}/users`)
+      .get(`${process.env.REACT_APP_GITHUB_BASE_URL}/search/users?q=${textUser}`)
       .then((response) => {
         const users: object[] = response.data;
         dispatch(fetchDataSuccess(users));
@@ -50,3 +50,4 @@ export {
     fethDataUsers,
     ACTIONS,
 };
+  
