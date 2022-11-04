@@ -29,7 +29,8 @@ const reducer = (state: state = initialState, action: dataState) => {
         case ACTIONS.FETCH_DATA_FAILURE:
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                loading: false
             }
         default: return state
     }
