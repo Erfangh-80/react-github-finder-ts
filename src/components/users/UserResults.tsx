@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 // component
 import UserItem from "./UserItem";
@@ -14,9 +13,8 @@ interface UserState {
 }
 
 const UserResults = (): JSX.Element => {
-  const dispatch = useDispatch();
 
-  const usersState: UserState = useSelector((state: any) => state);
+  const usersState: UserState = useSelector((state: any) => state.usersState);
 
   return (
     <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 text-white">
