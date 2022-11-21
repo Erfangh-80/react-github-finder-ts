@@ -2,7 +2,7 @@ import { ACTIONS, dataState } from "./usersActions"
 
 type state = {
     loading: boolean;
-    users: unknown;
+    users: [];
     error: string;
 }
 
