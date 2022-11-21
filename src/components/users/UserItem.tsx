@@ -22,7 +22,7 @@ const UserItem = ({ login, avatar_url }: UserProfile): JSX.Element => {
         </div>
         <div>
           <h2 className="py-1 font-bold">{login}</h2>
-          <Link className="text-gray-500 text-sm" to={`/users/${login}`}>
+          <Link className="text-gray-500 text-sm" to={`/user/${login}`}>
             Visit Profile
           </Link>
         </div>
