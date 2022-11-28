@@ -14,19 +14,19 @@ const initialState: UserState = {
 
 const reducer = (state: UserState = initialState, action: User) => {
     switch(action.type){
-        case ACTIONS.FETCH_DATA_REQUEST:
+        case ACTIONS.FETCH_USER_DATA_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case ACTIONS.FETCH_DATA_SUCCESS:
+        case ACTIONS.FETCH_USER_DATA_SUCCESS:
             return {
                 ...state,
                 user: action.payload,
                 loading: false
             }
             
-        case ACTIONS.FETCH_DATA_FAILURE:
+        case ACTIONS.FETCH_USER_DATA_FAILURE:
             return {
                 ...state,
                 error: action.payload,

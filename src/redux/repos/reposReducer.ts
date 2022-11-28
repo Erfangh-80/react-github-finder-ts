@@ -18,20 +18,18 @@ export type Repo = {
 
 const reducerRepos = (state: RepoState = initialState, action: Repo) => {
     switch(action.type){
-        case ACTIONS.FETCH_DATA_REQUESTS:
+        case ACTIONS.FETCH_REPOS_DATA_REQUESTS:
             return {
                 ...state,
                 loading: true,
             }
-        case ACTIONS.FETCH_DATA_SUCCESS:
-            console.log(action.payload);
-            
+        case ACTIONS.FETCH_REPOS_DATA_SUCCESS:
             return {
                 ...state,
                 repos: action.payload,
                 loading: false,
             }
-        case ACTIONS.FETCH_DATA_FAILURE:
+        case ACTIONS.FETCH_REPOS_DATA_FAILURE:
             return {
                 ...state,
                 error: action.payload,

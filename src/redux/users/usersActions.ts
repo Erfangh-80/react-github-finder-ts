@@ -1,9 +1,9 @@
 import axios from "axios";
 
 enum ACTIONS {
-  FETCH_DATA_REQUESTS = "fetch_data_requests",
-  FETCH_DATA_SUCCESS = "fetch_data_success",
-  FETCH_DATA_FAILURE = "fetch_data_failure",
+  FETCH_USERS_DATA_REQUESTS = "fetch_users_data_requests",
+  FETCH_USERS_DATA_SUCCESS = "fetch_users_data_success",
+  FETCH_USERS_DATA_FAILURE = "fetch_users_data_failure",
   FETCH_CLEAR_DATA = "fetch_clear_data",
 }
 
@@ -14,20 +14,20 @@ export type dataState = {
 
 const fetchDataRequest = (): dataState => {
   return {
-    type: ACTIONS.FETCH_DATA_REQUESTS,
+    type: ACTIONS.FETCH_USERS_DATA_REQUESTS,
   };
 };
 
 const fetchDataSuccess = (users: object[]): dataState => {
   return {
-    type: ACTIONS.FETCH_DATA_SUCCESS,
+    type: ACTIONS.FETCH_USERS_DATA_SUCCESS,
     payload: users,
   };
 };
 
 const fetchDataFailure = (errorMessage: string): dataState => {
   return {
-    type: ACTIONS.FETCH_DATA_FAILURE,
+    type: ACTIONS.FETCH_USERS_DATA_FAILURE,
     payload: errorMessage,
   };
 };

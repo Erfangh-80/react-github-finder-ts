@@ -2,9 +2,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 enum ACTIONS {
-  FETCH_DATA_REQUEST = "fetch-data-request",
-  FETCH_DATA_SUCCESS = "fetch-data-success",
-  FETCH_DATA_FAILURE = "fetch-data-failure",
+  FETCH_USER_DATA_REQUEST = "fetch-user_data-request",
+  FETCH_USER_DATA_SUCCESS = "fetch-user_data-success",
+  FETCH_USER_DATA_FAILURE = "fetch-user_data-failure",
 }
 
 export type User = {
@@ -14,20 +14,20 @@ export type User = {
 
 const fetchDataRequest = (): User => {
   return {
-    type: ACTIONS.FETCH_DATA_REQUEST,
+    type: ACTIONS.FETCH_USER_DATA_REQUEST,
   };
 };
 
 const fetchDataSuccess = (user: object): User => {
   return {
-    type: ACTIONS.FETCH_DATA_SUCCESS,
+    type: ACTIONS.FETCH_USER_DATA_SUCCESS,
     payload: user,
   };
 };
 
 const fetchDataFailure = (errorMSG: string): User => {
   return {
-    type: ACTIONS.FETCH_DATA_SUCCESS,
+    type: ACTIONS.FETCH_USER_DATA_SUCCESS,
     payload: errorMSG,
   };
 };
