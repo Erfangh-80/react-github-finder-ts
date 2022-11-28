@@ -3,7 +3,9 @@ import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchDataUser } from "../redux/user/userActions";
-import Loading from "../components/Layout/Spinner"
+import Loading from "../components/Layout/Spinner";
+import RepoList from "../components/repos/RepoList";
+import { fetchDataRepos } from "../redux/repos/reposActions";
 
 type User = {
   name: string;
@@ -27,6 +29,13 @@ interface UserState {
   user: User;
   error: string;
 }
+interface RepoState {
+  loading: false;
+  repos: {
+      items: object[]
+  };
+  error: string
+}
 
 const User = () => {
   const params = useParams();
@@ -34,13 +43,23 @@ const User = () => {
   const dispatch = useDispatch();
 
   const userState: UserState = useSelector((state: any) => state.userState);
+  const reposState = useSelector((state: any) => state.reposState)
 
+  
   useEffect(() => {
     dispatch(fetchDataUser(login));
+    dispatch(fetchDataRepos(login))
   }, [dispatch, login]);
-  console.log(`${userState.user.blog}`);
+  
 
-  if(userState.loading) return <Loading />
+
+  
+  
+  const websiteUrl: string = userState.user.blog?.startsWith('http') ? userState.user.blog : 'https://' + userState.user.blog
+
+  if (userState.loading) return <Loading />;
+
+
   return (
     <div className="w-full mx-auto lg:w-10/12">
       <div className="mb-4 ml-2">
@@ -92,22 +111,21 @@ const User = () => {
           </div>
           <div className="flex max-sm:flex-col max-sm:items-start items-center justify-between mt-5 p-3.5 w-full rounded-lg shadow-md bg-base-100">
             {userState.user.location && (
-              <div className="text-md max-lg:text-sm text-gray-500 mx-2">
+              <div className="text-md max-lg:text-sm text-gray-500 mx-6">
                 <span> Location : </span>
                 <div className="text-lg max-lg:text-sm font-bold mt-1 text-white">
                   {userState.user.location}
                 </div>
               </div>
             )}
-            <div className="border-r-2"></div>
             {userState.user.blog && (
               <div className="text-md max-lg:text-sm max-sm:border-none max-lg:text-sm text-gray-500  max-sm:mt-1 border-l-2 border-gray-700 mx-2 px-5">
                 <span> WebSite : </span>
-                <div className="text-lg  max-lg:text-sm font-bold mt-1 text-white">
+                <div className="text-lg max-lg:text-sm font-bold mt-1 text-white">
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href={`https://${userState.user.blog}`}
+                    href={`${websiteUrl}`}
                   >
                     {userState.user.blog}
                   </a>
@@ -179,6 +197,7 @@ const User = () => {
           </div>
         </div>
       </div>
+      <RepoList {...reposState}/>
     </div>
   );
 };
